@@ -5,7 +5,7 @@ import tkinter as tk
 # ウィンドウを作成
 win = tk.Tk()
 win.title("Hello, World!")  #タイトル
-win.geometry("500x250")  #サイズ
+win.geometry("500x300")  #サイズ
 
 # 部品を作成
 # ラベルを作成
