@@ -15,7 +15,7 @@ label.pack()
 # テキストボックスを作成
 text = tk.Entry(win)
 text.pack()
-text.insert(tk.END, 'クジラ')  #初期値を指定
+text.insert(tk.END, '田所')  #初期値を指定
 
 # OKボタンを押したとき
 def ok_click():
