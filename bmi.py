@@ -15,7 +15,7 @@ def calc_bmi():
 # ウィンドウを作成
 win = tk.Tk()
 win.title("肥満判定")
-win.geometry("500x250")
+win.geometry("500x300")
 
 # 部品を作成
 labelHeight = tk.Label(win, text='身長(cm):')
