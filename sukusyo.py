@@ -5,7 +5,8 @@ from PIL import Image
 import io
 
 # ボタンを押したときの処理
-def grabimage():
+def grabimage(var):
+    print(var)
     # クリップボードから画像を取得する
     im = ImageGrab.grabclipboard()
     # 画像を取得できなければ終了する
@@ -13,7 +14,11 @@ def grabimage():
         labelkanshi['text'] = 'None'
         return
     # 画像を縮小する
-    small_image = im.resize((1280, 720))
+    if var == 0:
+        small_image = im.resize((1280, 720))
+    elif var == 1:
+        small_image = im.resize((1920, 1080))
+
     output = io.BytesIO()
     small_image.convert("RGB").save(output,"BMP")
     data = output.getvalue()[14:]
@@ -25,7 +30,7 @@ def grabimage():
 
 # 画面の表示
 win = tk.Tk()
-win.title("スクショ圧縮")
+win.title("Clipboard Resize")
 win.geometry("500x300")
 
 # 部品を作成
@@ -33,8 +38,16 @@ labelsetsumei = tk.Label(win, text='クリップボードの画像を縮小し�
 labelsetsumei.pack()
 labelkanshi = tk.Label(win, text="---")
 labelkanshi.pack()
-
-button = tk.Button(win, text='縮小', command = grabimage )
+# ラジオボタン
+# ラジオボタンの初期値
+var = tk.IntVar()
+var.set(0)
+rd1 = tk.Radiobutton(win, value=0, variable=var, text='HD')
+rd1.pack()
+rd2 = tk.Radiobutton(win, value=1, variable=var, text='FHD')
+rd2.pack()
+#  ボタン
+button = tk.Button(win, text='縮小', command = grabimage(var.get()) )
 button.pack()
 # ウィンドウを動かす
 win.mainloop()
