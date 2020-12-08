@@ -15,9 +15,9 @@ def grabimage(var):
         return
     # 画像を縮小する
     if var == 0:
-        small_image = im.resize((1280, 720))
-    elif var == 1:
         small_image = im.resize((1920, 1080))
+    elif var == 1:
+        small_image = im.resize((1280, 720))
 
     output = io.BytesIO()
     small_image.convert("RGB").save(output,"BMP")
@@ -42,9 +42,9 @@ labelkanshi.pack()
 # ラジオボタンの初期値
 var = tk.IntVar()
 var.set(0)
-rd1 = tk.Radiobutton(win, value=0, variable=var, text='HD')
+rd1 = tk.Radiobutton(win, value=0, variable=var, text='FHD')
 rd1.pack()
-rd2 = tk.Radiobutton(win, value=1, variable=var, text='FHD')
+rd2 = tk.Radiobutton(win, value=1, variable=var, text='HD')
 rd2.pack()
 #  ボタン
 button = tk.Button(win, text='縮小', command = grabimage(var.get()) )
